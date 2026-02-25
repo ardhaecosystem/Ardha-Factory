@@ -1,0 +1,41 @@
+services:
+  agent-zero:
+    image: agent0ai/agent-zero:latest
+    container_name: ardha-agent-zero
+    restart: unless-stopped
+
+    # CRITICAL: Bind to localhost ONLY — Caddy handles external traffic
+    ports:
+      - "127.0.0.1:50080:80"
+
+    # Mount /a0/usr for persistence (NOT the entire /a0 — that breaks upgrades)
+    volumes:
+      - ./agent-zero/usr:/a0/usr
+
+    environment:
+      - TZ=Asia/Kolkata
+
+    # Resource limits for 4-core / 16GB server
+    deploy:
+      resources:
+        limits:
+          memory: 12G
+          cpus: "3.5"
+        reservations:
+          memory: 4G
+          cpus: "1.0"
+
+    # Health check — hit the web UI
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+    # Logging (Docker-level, in addition to Agent-Zero's internal logs)
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
