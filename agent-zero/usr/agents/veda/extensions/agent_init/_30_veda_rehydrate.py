@@ -3,6 +3,12 @@ import os
 from datetime import datetime, timezone
 from python.helpers.extension import Extension
 
+import sys as _sys
+_SCRIPTS_DIR = "/a0/usr/agents/veda/scripts"
+if _SCRIPTS_DIR not in _sys.path:
+    _sys.path.insert(0, _SCRIPTS_DIR)
+from registry_io import save_registry as _save_registry
+
 VEDA_STATE_DIR = "/a0/usr/veda-state"
 LOCKS_DIR = os.path.join(VEDA_STATE_DIR, "locks")
 AUDIT_DIR = os.path.join(VEDA_STATE_DIR, "audit")
@@ -182,7 +188,6 @@ class VedaRehydrate(Extension):
 
     def _save_json(self, path: str, data: dict) -> None:
         try:
-            with open(path, "w") as f:
-                json.dump(data, f, indent=2)
+            _save_registry(path, data)
         except OSError as e:
             print(f"[Veda:Rehydrate] WARN: Could not save {path}: {e}")
