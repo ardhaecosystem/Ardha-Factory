@@ -1,31 +1,45 @@
-### veda_dispatch:
-Ardha Factory pipeline dispatch tool.
-Use this tool to delegate tasks to specialised sub-agents within the current pipeline stage.
-Always specify the correct stage, agent name, task description, and project name.
-Never dispatch to an agent outside the current active stage.
-Never dispatch without a project name — this enforces memory isolation.
+### veda_dispatch
+Ardha Factory registry-driven dispatch tool.
+Use this tool to delegate Spec work to a registered sub-agent.
 
-Valid stages and their agents:
-- stage_1: planner, researcher, architect
-- stage_2: documentation_formatter, ppt_designer, spec_architect, project_manager, project_state_manager, change_manager
-- stage_3: frontend_developer, backend_developer, autonomous_agent_creator, github_maintainer, debugger, code_reviewer
-- stage_4: cicd_engineer, qa_test_automation
+**Pre-dispatch checklist (mandatory):**
+1. Verify spec hash integrity using spec-manager skill
+2. Acquire mutex lock using lock-manager skill
+3. Then call this tool
 
-usage:
+**Required args:**
+- `agent_id` — agent profile name from agent_registry.json
+- `team_id` — team the agent is assigned to
+- `project_id` — project context for memory isolation
+- `spec_id` — Spec ID being executed
+- `task` — structured task description including AC references
+
+**Optional args:**
+- `reset` — "true" (default) to create fresh sub-agent, "false" to reuse existing
+
+**Validation performed automatically:**
+- Agent must exist in agent_registry.json
+- Agent must be assigned to the specified team
+- Team must be active
+- Spec lock must be held and not expired
+
+**Example:**
 ~~~json
 {
     "thoughts": [
-        "I need to delegate the requirements analysis task to the planner sub-agent.",
-        "This is stage_1. The planner is valid for this stage.",
-        "Project is ardha-main. Memory isolation will be enforced."
+        "Papa approved SPEC-team-frontend-proj-dashboard-001.",
+        "Hash verified. Lock acquired for this spec.",
+        "Dispatching to 'frontend-dev' agent in team-frontend."
     ],
-    "headline": "Dispatching to planner — Stage 1",
+    "headline": "Dispatching SPEC-team-frontend-proj-dashboard-001 to frontend-dev",
     "tool_name": "veda_dispatch",
     "tool_args": {
-        "stage": "stage_1",
-        "agent": "planner",
-        "task": "Analyse the client requirements and produce a structured project plan with milestones, deliverables, and risk assessment.",
-        "project": "ardha-main"
+        "agent_id": "frontend-dev",
+        "team_id": "team-frontend",
+        "project_id": "proj-dashboard",
+        "spec_id": "SPEC-team-frontend-proj-dashboard-001",
+        "task": "Spec: SPEC-team-frontend-proj-dashboard-001\nAC #1: Login form renders correctly\nAC #2: Form validates required fields\nTask 1 (AC: #1): Create LoginForm component\nTask 2 (AC: #2): Add validation logic",
+        "reset": "true"
     }
 }
 ~~~

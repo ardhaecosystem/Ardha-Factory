@@ -1,0 +1,13 @@
+{
+  "schema_version": "3.0.0",
+  "pipeline_id": null,
+  "status": "idle",
+  "current_spec": null,
+  "completed_specs": [],
+  "failed_specs": [],
+  "blocked_specs": [],
+  "queue": [],
+  "team_assignments": {},
+  "last_updated": null,
+  "updated_by": null
+}

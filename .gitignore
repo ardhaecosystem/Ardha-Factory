@@ -18,3 +18,12 @@ logs/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Ardha Factory runtime state — not source code
+agent-zero/usr/veda-state/*.sha256
+agent-zero/usr/veda-state/audit/
+agent-zero/usr/veda-state/locks/
+agent-zero/usr/veda-state/specs/
+agent-zero/usr/memory/
+agent-zero/usr/chats/
+agent-zero/usr/workdir/

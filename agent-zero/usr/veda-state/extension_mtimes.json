@@ -1,0 +1,16 @@
+{
+  "/a0/usr/agents/veda/extensions/message_loop_end/_15_escalation_check.py": 1772293077.6954944,
+  "/a0/usr/agents/veda/extensions/tool_execute_after/_20_audit_tool.py": 1772293056.0942857,
+  "/a0/usr/agents/veda/extensions/tool_execute_before/_12_git_validation.py": 1772293204.0397134,
+  "/a0/usr/agents/veda/extensions/tool_execute_before/_14_approval_gate.py": 1772293223.302899,
+  "/a0/usr/agents/veda/extensions/system_prompt/_15_inject_registry.py": 1772268915.417572,
+  "/a0/usr/agents/veda/extensions/agent_init/_10_veda_identity.py": 1772027316.2183952,
+  "/a0/usr/agents/veda/extensions/agent_init/_30_veda_rehydrate.py": 1772300458.9195976,
+  "/a0/usr/agents/veda/extensions/agent_init/_20_load_registries.py": 1772268776.10976,
+  "/a0/usr/agents/veda/extensions/error_format/_10_model_fallback.py": 1772293247.0681279,
+  "/a0/usr/agents/veda/extensions/monologue_end/_35_restart_check.py": 1772299724.60954,
+  "/a0/usr/agents/veda/extensions/monologue_end/_40_audit_log.py": 1772293032.0740535,
+  "/a0/usr/agents/veda/extensions/before_main_llm_call/_12_team_isolation.py": 1772270999.2777023,
+  "/a0/usr/agents/veda/extensions/before_main_llm_call/_14_lock_enforcement.py": 1772291591.5353847,
+  "schema_version": "3.0.0"
+}

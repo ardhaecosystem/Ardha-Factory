@@ -1,0 +1,9 @@
+{
+  "schema_version": "3.0.0",
+  "type": "restart_required",
+  "required": false,
+  "reason": null,
+  "triggered_by": null,
+  "triggered_at": null,
+  "pending_changes": []
+}
