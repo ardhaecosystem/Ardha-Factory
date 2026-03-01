@@ -1,7 +1,325 @@
 {
   "schema_version": "3.0.0",
   "type": "agent_registry",
-  "agents": {},
-  "last_modified": "2026-02-28T19:53:56.508330+00:00",
+  "agents": {
+    "devops-planner": {
+      "agent_id": "devops-planner",
+      "profile": "devops-planner",
+      "role": "Planning tier agent for the DevOps Team. Converts approved requirements into research_report.md. Clarifies scope boundaries and identifies project constraints before any technical work begins. FORBIDDEN from architecture design or implementation of any kind.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:01:41.022362+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-planner",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "x-ai/grok-4.1-fast",
+        "chat_model_kwargs": {
+          "temperature": 0.3
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-researcher": {
+      "agent_id": "devops-researcher",
+      "profile": "devops-researcher",
+      "role": "Planning tier agent for the DevOps Team. Uses built-in search tool to research modern best practices and tech stack options. Produces PRD.md as primary deliverable. Evaluates technology choices against project requirements. FORBIDDEN from writing ARD or Spec documents.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:16:01.302458+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-researcher",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "x-ai/grok-4.1-fast",
+        "chat_model_kwargs": {
+          "temperature": 0.3
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-architect": {
+      "agent_id": "devops-architect",
+      "profile": "devops-architect",
+      "role": "Planning tier agent for the DevOps Team. Uses built-in search tool to research technical solutions. Produces ARD.md as primary deliverable. Performs dependency compatibility analysis and defines system boundaries and integration contracts. FORBIDDEN from writing implementation code of any kind.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:21:37.431481+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-architect",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "x-ai/grok-4.1-fast",
+        "chat_model_kwargs": {
+          "temperature": 0.3
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-spec-architect": {
+      "agent_id": "devops-spec-architect",
+      "profile": "devops-spec-architect",
+      "role": "Planning tier agent for the DevOps Team. Converts PRD.md and ARD.md into spec-00X.md files using Veda's built-in spec-manager skill. Must strictly follow the Story-Spec format. Uses spec-manager to generate SHA-256 hash at completion and register it into the Ardha Factory state registry. FORBIDDEN from editing PRD or ARD documents.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:27:33.531928+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-spec-architect",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "x-ai/grok-4.1-fast",
+        "chat_model_kwargs": {
+          "temperature": 0.3
+        }
+      },
+      "tools_enabled": [
+        "spec-manager"
+      ],
+      "mcp_servers": []
+    },
+    "devops-change-manager": {
+      "agent_id": "devops-change-manager",
+      "profile": "devops-change-manager",
+      "role": "Planning tier agent for the DevOps Team. Performs Git diff impact analysis on proposed changes. Validates cross-component disruption risk and flags backward compatibility issues before implementation begins. FORBIDDEN from writing any code.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:33:39.290601+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-change-manager",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "x-ai/grok-4.1-fast",
+        "chat_model_kwargs": {
+          "temperature": 0.3
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-frontend": {
+      "agent_id": "devops-frontend",
+      "profile": "devops-frontend",
+      "role": "Implementation tier agent for the DevOps Team. Responsible for UI implementation only using shadcn-ui, React, Tailwind CSS and modern frontend patterns. Must follow acceptance criteria strictly and produce beautiful, modern, production-ready interfaces. FORBIDDEN from modifying any backend logic.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:38:24.967556+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-frontend",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "minimax/minimax-m2.5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.4
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-backend": {
+      "agent_id": "devops-backend",
+      "profile": "devops-backend",
+      "role": "Implementation tier agent for the DevOps Team. Responsible for API and server-side logic only using FastAPI and Python. Builds production-ready backend services strictly following the active spec acceptance criteria. FORBIDDEN from modifying any UI or frontend code.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:42:39.621210+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-backend",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "minimax/minimax-m2.5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.4
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-agent-creator": {
+      "agent_id": "devops-agent-creator",
+      "profile": "devops-agent-creator",
+      "role": "Implementation tier agent for the DevOps Team. Creates PydanticAI and LangGraph agents only. Builds production-ready AI agent pipelines with custom RAG capabilities and Node.js tooling layer. Strictly bound to the active Story-Spec acceptance criteria. FORBIDDEN from working outside the active spec scope.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:47:42.524812+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-agent-creator",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "minimax/minimax-m2.5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.4
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-escalation-engineer": {
+      "agent_id": "devops-escalation-engineer",
+      "profile": "devops-escalation-engineer",
+      "role": "Implementation tier agent for the DevOps Team. Invoked ONLY by Veda when QA failures >= 2 or code review failures >= 2. Handles repeated failure resolution and performs deep integration repair across frontend, backend, and agent layers. Cannot bypass governance rules or approval gates under any circumstances.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:51:37.140686+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-escalation-engineer",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "minimax/minimax-m2.5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.2
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-cicd": {
+      "agent_id": "devops-cicd",
+      "profile": "devops-cicd",
+      "role": "Automation tier agent for the DevOps Team. Responsible for CI/CD pipeline configuration, deployment scripts, and environment configuration only. Produces production-ready deployment infrastructure. FORBIDDEN from implementing any feature logic or modifying application code.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T14:58:40.338712+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-cicd",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "z-ai/glm-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_kwargs": {
+          "temperature": 0.2
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-code-reviewer": {
+      "agent_id": "devops-code-reviewer",
+      "profile": "devops-code-reviewer",
+      "role": "Verification tier agent for the DevOps Team. Validates all implementation against the active Story-Spec SHA-256 hash and ARD architectural constraints. Issues formal approval or rejection with detailed reasoning. Tracks code_review_failures counter \u2014 if >= 2 failures, escalates to devops-escalation-engineer via Veda. FORBIDDEN from modifying any code directly.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T15:06:24.382164+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-code-reviewer",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "deepseek/deepseek-v3",
+        "util_model_provider": "openrouter",
+        "util_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_kwargs": {
+          "temperature": 0.1
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-qa": {
+      "agent_id": "devops-qa",
+      "profile": "devops-qa",
+      "role": "Verification tier agent for the DevOps Team. Generates automated tests mapped 1:1 to each acceptance criteria in the active Story-Spec. On test failure: updates pipeline state, increments qa_failures counter, and triggers automatic git revert via devops-github-maintainer. If qa_failures >= 2, escalates to devops-escalation-engineer via Veda. FORBIDDEN from modifying any feature logic.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T15:17:11.853683+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-qa",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "deepseek/deepseek-v3",
+        "util_model_provider": "openrouter",
+        "util_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_kwargs": {
+          "temperature": 0.1
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-github-maintainer": {
+      "agent_id": "devops-github-maintainer",
+      "profile": "devops-github-maintainer",
+      "role": "Management and Delivery tier agent for the DevOps Team. Has full Git CLI capability. Manages PR and merge workflow. Enforces branch naming convention equal to the active spec ID. Synchronizes Git state with Ardha Factory pipeline state. Executes automatic rollback on QA failure when invoked by devops-qa. Invokable at any time by Veda.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T15:25:05.340076+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-github-maintainer",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.2
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-doc-formatter": {
+      "agent_id": "devops-doc-formatter",
+      "profile": "devops-doc-formatter",
+      "role": "Management and Delivery tier agent for the DevOps Team. Generates client-facing documentation only. Produces beautiful, professional, production-ready documentation from completed project artifacts. FORBIDDEN from making any changes to the codebase.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T15:30:07.633135+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-doc-formatter",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.4
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    },
+    "devops-ppt-designer": {
+      "agent_id": "devops-ppt-designer",
+      "profile": "devops-ppt-designer",
+      "role": "Management and Delivery tier agent for the DevOps Team. Generates presentation artifacts only. Produces beautiful, modern, client-ready PowerPoint presentations from completed project deliverables. Invoked only by Veda. FORBIDDEN from making any changes to the codebase or documentation.",
+      "team_id": "team-devops",
+      "status": "assigned",
+      "created_at": "2026-03-01T15:34:27.837939+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/devops-ppt-designer",
+      "model_overrides": {
+        "chat_model_provider": "openrouter",
+        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_provider": "openrouter",
+        "util_model_name": "moonshotai/kimi-k2.5",
+        "chat_model_kwargs": {
+          "temperature": 0.5
+        }
+      },
+      "tools_enabled": [],
+      "mcp_servers": []
+    }
+  },
+  "last_modified": "2026-03-01T15:41:45.162592+00:00",
   "modified_by": "veda"
 }

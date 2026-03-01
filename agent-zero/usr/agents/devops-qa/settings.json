@@ -1,0 +1,13 @@
+{
+  "_comment": "Profile settings for devops-qa. Add model overrides here if needed.",
+  "_forged_at": "2026-03-01T15:17:11.853366+00:00",
+  "_forged_by": "veda",
+  "_team": "team-devops",
+  "chat_model_provider": "openrouter",
+  "chat_model_name": "deepseek/deepseek-v3",
+  "util_model_provider": "openrouter",
+  "util_model_name": "anthropic/claude-sonnet-4-5",
+  "chat_model_kwargs": {
+    "temperature": 0.1
+  }
+}

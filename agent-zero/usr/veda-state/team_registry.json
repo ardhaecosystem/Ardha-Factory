@@ -1,7 +1,35 @@
 {
   "schema_version": "3.0.0",
   "type": "team_registry",
-  "teams": {},
-  "last_modified": null,
-  "modified_by": null
+  "teams": {
+    "team-devops": {
+      "team_id": "team-devops",
+      "created_at": "2026-03-01T15:41:02.925058+00:00",
+      "created_by": "veda",
+      "status": "active",
+      "purpose": "Enterprise AI agent development team. Builds production-ready AI agents with PydanticAI and LangGraph, FastAPI backends, Node.js tooling, and shadcn-ui frontends. Assigns to any project papa assigns.",
+      "agents": [
+        "devops-planner",
+        "devops-researcher",
+        "devops-architect",
+        "devops-spec-architect",
+        "devops-change-manager",
+        "devops-frontend",
+        "devops-backend",
+        "devops-agent-creator",
+        "devops-escalation-engineer",
+        "devops-cicd",
+        "devops-code-reviewer",
+        "devops-qa",
+        "devops-github-maintainer",
+        "devops-doc-formatter",
+        "devops-ppt-designer"
+      ],
+      "projects": [],
+      "memory_subdir": "team-devops",
+      "isolation_level": "strict"
+    }
+  },
+  "last_modified": "2026-03-01T15:41:45.162592+00:00",
+  "modified_by": "veda"
 }
