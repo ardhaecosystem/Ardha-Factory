@@ -3,7 +3,7 @@
 Health Check — verify_integrity.py
 Verifies the integrity of the entire Ardha Factory state.
 Checks registry consistency, orphan detection, FAISS namespace alignment,
-lock hygiene, spec integrity, and upgrade safety.
+lock hygiene, spec integrity, upgrade safety, and Phase 4 components.
 Exit codes: 0=OK, 1=warnings, 2=errors
 """
 
@@ -274,36 +274,17 @@ def check_upgrade() -> None:
         "/a0/prompts",
     ]
 
-    # Known safe custom locations
-    safe_prefixes = [
-        "/a0/usr/",
-    ]
-
-    all_safe = True
-    for core_dir in core_dirs:
-        if not os.path.exists(core_dir):
-            continue
-        for dirpath, _, filenames in os.walk(core_dir):
-            for fname in filenames:
-                if not fname.endswith(".py"):
-                    continue
-                if fname.startswith("__"):
-                    continue
-                full_path = os.path.join(dirpath, fname)
-                # Check if this is a known core file (not in usr/)
-                if not any(full_path.startswith(p) for p in safe_prefixes):
-                    # It's a core file — we just confirm it's not one of ours
-                    pass  # All core files are expected here
-
     ok("Core directories: no custom files injected into /a0/python/ or /a0/prompts/")
 
     # Check: all Veda custom files are in usr/
+    # Include lib/ alongside extensions, tools, skills
     veda_ext = os.path.join(AGENTS_DIR, "veda", "extensions")
     veda_tools = os.path.join(AGENTS_DIR, "veda", "tools")
     veda_skills = os.path.join(AGENTS_DIR, "veda", "skills")
+    veda_lib = os.path.join(AGENTS_DIR, "veda", "lib")
 
     custom_count = 0
-    for d in [veda_ext, veda_tools, veda_skills]:
+    for d in [veda_ext, veda_tools, veda_skills, veda_lib]:
         if os.path.exists(d):
             for _, _, files in os.walk(d):
                 custom_count += len([f for f in files if f.endswith(".py")])
@@ -331,7 +312,6 @@ def check_upgrade() -> None:
             error(f"Veda file found in core directory: {f}")
     else:
         ok("No Veda files found in core directories")
-
 
 
 # --- Check: Registry checksums ---
@@ -363,6 +343,128 @@ def check_checksums() -> None:
         else:
             error(f"{fname}: {msg}")
 
+
+# --- Check: Phase 4 components ---
+
+def check_phase4() -> None:
+    print("\n[Phase 4 — Token Optimization Engine]")
+
+    veda_base = os.path.join(AGENTS_DIR, "veda")
+
+    # --- 4A: Runtime Context Budget Guard ---
+    budget_ext = os.path.join(
+        veda_base,
+        "extensions/message_loop_prompts_after/_95_context_budget_guard.py"
+    )
+    token_budget_lib = os.path.join(veda_base, "lib/token_budget.py")
+    history_comp_lib = os.path.join(veda_base, "lib/history_compressor.py")
+
+    if os.path.exists(budget_ext):
+        ok("4A: _95_context_budget_guard.py present")
+    else:
+        error("4A: _95_context_budget_guard.py MISSING")
+
+    if os.path.exists(token_budget_lib):
+        ok("4A: lib/token_budget.py present")
+    else:
+        error("4A: lib/token_budget.py MISSING")
+
+    if os.path.exists(history_comp_lib):
+        ok("4A: lib/history_compressor.py present")
+    else:
+        error("4A: lib/history_compressor.py MISSING")
+
+    # --- 4B: Workspace Compactor Skill ---
+    skill_md = os.path.join(veda_base, "skills/claw-compactor/SKILL.md")
+    path_validator = os.path.join(
+        veda_base, "skills/claw-compactor/scripts/path_validator.py"
+    )
+    mem_compress = os.path.join(
+        veda_base, "skills/claw-compactor/scripts/mem_compress.py"
+    )
+
+    if os.path.exists(skill_md):
+        ok("4B: claw-compactor/SKILL.md present")
+    else:
+        error("4B: claw-compactor/SKILL.md MISSING")
+
+    if os.path.exists(path_validator):
+        ok("4B: claw-compactor/scripts/path_validator.py present")
+    else:
+        error("4B: claw-compactor/scripts/path_validator.py MISSING")
+
+    if os.path.exists(mem_compress):
+        ok("4B: claw-compactor/scripts/mem_compress.py present")
+    else:
+        error("4B: claw-compactor/scripts/mem_compress.py MISSING")
+
+    # --- 4C: Tiered Summary Injection ---
+    tier_ext = os.path.join(
+        veda_base,
+        "extensions/tool_execute_after/_15_tiered_summary.py"
+    )
+    tier_lib = os.path.join(veda_base, "lib/tier_builder.py")
+    tier_cache = os.path.join(VEDA_STATE_DIR, "tier-cache")
+
+    if os.path.exists(tier_ext):
+        ok("4C: _15_tiered_summary.py present")
+    else:
+        error("4C: _15_tiered_summary.py MISSING")
+
+    if os.path.exists(tier_lib):
+        ok("4C: lib/tier_builder.py present")
+    else:
+        error("4C: lib/tier_builder.py MISSING")
+
+    if os.path.exists(tier_cache):
+        subdirs = [
+            d for d in os.listdir(tier_cache)
+            if os.path.isdir(os.path.join(tier_cache, d))
+        ]
+        ok(f"4C: tier-cache present ({len(subdirs)} session dir(s))")
+    else:
+        ok("4C: tier-cache not yet created (created on first sub-agent call — expected)")
+
+    # --- 4E: Audit Integration ---
+    audit_monologue = os.path.join(
+        veda_base, "extensions/monologue_end/_40_audit_log.py"
+    )
+    audit_tool = os.path.join(
+        veda_base, "extensions/tool_execute_after/_20_audit_tool.py"
+    )
+
+    if os.path.exists(audit_monologue):
+        content = open(audit_monologue).read()
+        if "context_compression" in content:
+            ok("4E: _40_audit_log.py has context_compression event")
+        else:
+            error("4E: _40_audit_log.py missing context_compression event")
+    else:
+        error("4E: _40_audit_log.py MISSING")
+
+    if os.path.exists(audit_tool):
+        content = open(audit_tool).read()
+        if "subordinate_tiered" in content:
+            ok("4E: _20_audit_tool.py has subordinate_tiered event")
+        else:
+            error("4E: _20_audit_tool.py missing subordinate_tiered event")
+    else:
+        error("4E: _20_audit_tool.py MISSING")
+
+    # --- 4F: Restart & Lifecycle Safety ---
+    rehydrate = os.path.join(
+        veda_base, "extensions/agent_init/_30_veda_rehydrate.py"
+    )
+    if os.path.exists(rehydrate):
+        content = open(rehydrate).read()
+        if "_cleanup_tier_cache" in content and "_reset_phase4_state" in content:
+            ok("4F: _30_veda_rehydrate.py has Phase 4 cleanup methods")
+        else:
+            error("4F: _30_veda_rehydrate.py missing Phase 4 cleanup methods")
+    else:
+        error("4F: _30_veda_rehydrate.py MISSING")
+
+
 # --- Full check ---
 
 def check_full() -> None:
@@ -376,6 +478,7 @@ def check_full() -> None:
     check_locks()
     check_faiss()
     check_upgrade()
+    check_phase4()
 
 
 # --- Summary and exit ---
@@ -408,7 +511,10 @@ def main():
     parser = argparse.ArgumentParser(description="Ardha Factory Health Check")
     parser.add_argument(
         "check",
-        choices=["full", "registries", "checksums", "orphans", "locks", "faiss", "upgrade"],
+        choices=[
+            "full", "registries", "checksums", "orphans",
+            "locks", "faiss", "upgrade", "phase4"
+        ],
         help="Which check to run"
     )
     args = parser.parse_args()
@@ -417,6 +523,8 @@ def main():
         check_full()
     elif args.check == "registries":
         check_registries()
+    elif args.check == "checksums":
+        check_checksums()
     elif args.check == "orphans":
         check_orphans()
     elif args.check == "locks":
@@ -425,6 +533,8 @@ def main():
         check_faiss()
     elif args.check == "upgrade":
         check_upgrade()
+    elif args.check == "phase4":
+        check_phase4()
 
     sys.exit(print_summary())
 

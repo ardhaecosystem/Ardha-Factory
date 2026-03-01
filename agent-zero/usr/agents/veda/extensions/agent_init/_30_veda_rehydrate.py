@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 from datetime import datetime, timezone
 from python.helpers.extension import Extension
 
@@ -12,6 +13,7 @@ from registry_io import save_registry as _save_registry
 VEDA_STATE_DIR = "/a0/usr/veda-state"
 LOCKS_DIR = os.path.join(VEDA_STATE_DIR, "locks")
 AUDIT_DIR = os.path.join(VEDA_STATE_DIR, "audit")
+TIER_CACHE_DIR = os.path.join(VEDA_STATE_DIR, "tier-cache")
 PIPELINE_STATE_FILE = os.path.join(VEDA_STATE_DIR, "pipeline_state.json")
 RESTART_REQUIRED_FILE = os.path.join(VEDA_STATE_DIR, "restart_required.json")
 LOCK_TTL_SECONDS = 3600
@@ -27,7 +29,9 @@ class VedaRehydrate(Extension):
     2. Re-queue interrupted specs (in-progress specs whose lock has expired)
     3. Clear the restart_required flag
     4. Update extension_mtimes baseline to current state
-    5. Write restart recovery audit entry
+    5. Purge tier cache (Phase 4C L1/L2 files — ephemeral, context-specific)
+    6. Reset Phase 4 agent data state (stale compression/tier events)
+    7. Write restart recovery audit entry
 
     Only fires for Veda (agent 0).
     Subordinate agents have no recovery responsibilities.
@@ -44,6 +48,8 @@ class VedaRehydrate(Extension):
         requeued_specs = self._requeue_interrupted_specs(expired_locks)
         self._clear_restart_flag()
         self._update_extension_mtimes()
+        self._cleanup_tier_cache()
+        self._reset_phase4_state()
         self._audit_recovery(expired_locks, requeued_specs)
 
         print(
@@ -154,6 +160,33 @@ class VedaRehydrate(Extension):
             mtime_file = os.path.join(VEDA_STATE_DIR, "extension_mtimes.json")
             self._save_json(mtime_file, mtimes)
             print(f"[Veda:Rehydrate] Extension mtime baseline updated: {len(mtimes)} files.")
+
+    def _cleanup_tier_cache(self) -> None:
+        """
+        Purge the Phase 4C tier cache directory on restart.
+        L1/L2 tier files are context-specific and useless after restart.
+        The directory is recreated on demand by tier_builder.py.
+        """
+        if not os.path.exists(TIER_CACHE_DIR):
+            return
+        try:
+            shutil.rmtree(TIER_CACHE_DIR)
+            print("[Veda:Rehydrate] Tier cache purged.")
+        except OSError as e:
+            print(f"[Veda:Rehydrate] WARN: Could not purge tier cache: {e}")
+
+    def _reset_phase4_state(self) -> None:
+        """
+        Clear stale Phase 4 metadata from agent data store.
+        Prevents compression events or tier events from a previous session
+        bleeding into the first monologue after restart.
+        """
+        try:
+            self.agent.set_data("_compression_events", None)
+            self.agent.set_data("_tier_events", None)
+            print("[Veda:Rehydrate] Phase 4 state reset.")
+        except Exception as e:
+            print(f"[Veda:Rehydrate] WARN: Phase 4 state reset failed: {e}")
 
     def _audit_recovery(self, expired_locks: list, requeued_specs: list) -> None:
         try:
