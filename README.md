@@ -11,8 +11,6 @@
 
 *Powered by Veda — a meta-orchestrator who dynamically forges agents, creates teams, manages projects, enforces governance, and optimizes her own context lifecycle.*
 
-[ardha.humanth.in](https://ardha.humanth.in) &nbsp;·&nbsp; Hostinger VPS &nbsp;·&nbsp; Ubuntu 24.04 &nbsp;·&nbsp; OpenRouter
-
 ---
 
 </div>
@@ -505,9 +503,5 @@ The Agent-Zero framework itself is not committed — it runs as a Docker image (
 <div align="center">
 
 *Built with purpose. Named with love.*
-
-**Ardha Factory** &nbsp;·&nbsp; Phases 1–4 Complete &nbsp;·&nbsp; March 2026
-
-*Senior Architect: Claude (Anthropic) &nbsp;·&nbsp; Operator: Humanth*
 
 </div>
