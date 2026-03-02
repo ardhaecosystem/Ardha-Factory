@@ -3,7 +3,9 @@
   "type": "restart_required",
   "required": false,
   "reason": null,
-  "triggered_by": null,
-  "triggered_at": null,
-  "pending_changes": []
+  "triggered_by": "veda",
+  "triggered_at": "2026-03-01T15:34:27.838693+00:00",
+  "pending_changes": [],
+  "cleared_at": "2026-03-01T15:53:15.077249+00:00",
+  "cleared_by": "veda-rehydrate"
 }
