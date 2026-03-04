@@ -1,13 +1,19 @@
 {
   "schema_version": "3.0.0",
-  "pipeline_id": null,
-  "status": "idle",
+  "type": "pipeline_state",
+  "project_id": "proj-echo-sentinel",
+  "team_id": "team-devops",
+  "status": "PIPELINE_CLOSED",
   "current_spec": null,
-  "completed_specs": [],
-  "failed_specs": [],
-  "blocked_specs": [],
-  "queue": [],
-  "team_assignments": {},
-  "last_updated": null,
-  "updated_by": null
+  "stage": "G9_COMPLETE",
+  "specs_queue": [],
+  "specs_complete": [
+    "SPEC-team-devops-proj-echo-sentinel-001"
+  ],
+  "specs_failed": [],
+  "qa_failures": 0,
+  "code_review_failures": 0,
+  "created_at": "2026-03-03T12:00:00+00:00",
+  "last_updated": "2026-03-03T10:27:25.155167+00:00",
+  "notes": "G9 PROJECT COMPLETION. Browser automation test PASSED. All 6 UI assertions verified. Sentiment='Positive' (95% confidence). Pipeline formally closed."
 }

@@ -13,11 +13,11 @@
       "profile_path": "/a0/usr/agents/devops-planner",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "anthropic/claude-sonnet-4.6",
         "util_model_provider": "openrouter",
         "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.3
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -34,11 +34,11 @@
       "profile_path": "/a0/usr/agents/devops-researcher",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "z-ai/glm-5",
         "util_model_provider": "openrouter",
         "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.3
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -55,11 +55,11 @@
       "profile_path": "/a0/usr/agents/devops-architect",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "anthropic/claude-sonnet-4.6",
         "util_model_provider": "openrouter",
         "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.3
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -76,11 +76,11 @@
       "profile_path": "/a0/usr/agents/devops-spec-architect",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "anthropic/claude-sonnet-4.6",
         "util_model_provider": "openrouter",
         "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.3
+          "temperature": 0.1
         }
       },
       "tools_enabled": [
@@ -99,11 +99,11 @@
       "profile_path": "/a0/usr/agents/devops-change-manager",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "minimax/minimax-m2.5",
         "util_model_provider": "openrouter",
         "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.3
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -120,11 +120,11 @@
       "profile_path": "/a0/usr/agents/devops-frontend",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "minimax/minimax-m2.5",
+        "chat_model_name": "moonshotai/kimi-k2.5",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.4
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -141,11 +141,11 @@
       "profile_path": "/a0/usr/agents/devops-backend",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "minimax/minimax-m2.5",
+        "chat_model_name": "moonshotai/kimi-k2.5",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.4
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -162,11 +162,11 @@
       "profile_path": "/a0/usr/agents/devops-agent-creator",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "minimax/minimax-m2.5",
+        "chat_model_name": "moonshotai/kimi-k2.5",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.4
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -183,11 +183,11 @@
       "profile_path": "/a0/usr/agents/devops-escalation-engineer",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "minimax/minimax-m2.5",
+        "chat_model_name": "z-ai/glm-5",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.2
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -206,9 +206,9 @@
         "chat_model_provider": "openrouter",
         "chat_model_name": "z-ai/glm-5",
         "util_model_provider": "openrouter",
-        "util_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.2
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -225,9 +225,9 @@
       "profile_path": "/a0/usr/agents/devops-code-reviewer",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "deepseek/deepseek-v3",
+        "chat_model_name": "z-ai/glm-5",
         "util_model_provider": "openrouter",
-        "util_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
           "temperature": 0.1
         }
@@ -246,9 +246,9 @@
       "profile_path": "/a0/usr/agents/devops-qa",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "deepseek/deepseek-v3",
+        "chat_model_name": "deepseek/deepseek-v3.2",
         "util_model_provider": "openrouter",
-        "util_model_name": "anthropic/claude-sonnet-4-5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
           "temperature": 0.1
         }
@@ -267,11 +267,11 @@
       "profile_path": "/a0/usr/agents/devops-github-maintainer",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "z-ai/glm-5",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.2
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -288,11 +288,11 @@
       "profile_path": "/a0/usr/agents/devops-doc-formatter",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "google/gemini-2.5-flash",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.4
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
@@ -309,17 +309,112 @@
       "profile_path": "/a0/usr/agents/devops-ppt-designer",
       "model_overrides": {
         "chat_model_provider": "openrouter",
-        "chat_model_name": "anthropic/claude-sonnet-4-5",
+        "chat_model_name": "google/gemini-2.5-flash",
         "util_model_provider": "openrouter",
-        "util_model_name": "moonshotai/kimi-k2.5",
+        "util_model_name": "x-ai/grok-4.1-fast",
         "chat_model_kwargs": {
-          "temperature": 0.5
+          "temperature": 0.1
         }
       },
       "tools_enabled": [],
       "mcp_servers": []
+    },
+    "research-scholar": {
+      "agent_id": "research-scholar",
+      "profile": "research-scholar",
+      "role": "Research Tier agent in the team-research pod. Sole responsibility is academic and theoretical intelligence gathering. Searches arXiv, PapersWithCode, and academic sources only. Extracts claims, summarizes core contributions, identifies assumptions, captures limitations. Does NOT assess production viability. Does NOT synthesize final architecture. Does NOT write artifacts to disk. Produces structured ACADEMIC_INTEL_REPORT entries with schema: Item ID, Category, Title, URL, Summary, Claimed Value, Potential Risk, Evidence Level, Retrieval Timestamp. Outputs to Veda only.",
+      "team_id": "team-research",
+      "status": "assigned",
+      "created_at": "2026-03-04T08:03:26.829633+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/research-scholar",
+      "model_overrides": {
+        "chat_model": "google/gemini-2.5-flash",
+        "utility_model": "x-ai/grok-4.1-fast",
+        "temperature": 0.3
+      },
+      "tools_enabled": [
+        "knowledge_tool",
+        "browser_agent"
+      ],
+      "mcp_servers": [],
+      "forbidden_tools": [
+        "code_execution_tool",
+        "github_mcp"
+      ]
+    },
+    "research-scout": {
+      "agent_id": "research-scout",
+      "profile": "research-scout",
+      "role": "Research Tier agent in the team-research pod. Sole responsibility is applied OSS and ecosystem intelligence gathering. Searches GitHub repositories, emerging frameworks, MCP servers, and community discussions. For every source found, collects repository metadata and evaluates implementation maturity. Does NOT interpret academic theory. Does NOT validate long-term feasibility or architectural coherence. Does NOT write any artifact to disk. Produces structured OSS_INTEL_REPORT entries strictly following this schema: Item ID, Category, Title, URL, Summary, Claimed Value, Potential Risk, Evidence Level, Retrieval Timestamp. Outputs to Veda only. Avoids duplicating academic interpretation already covered by research-scholar.",
+      "team_id": "team-research",
+      "status": "assigned",
+      "created_at": "2026-03-04T08:29:50.914623+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/research-scout",
+      "model_overrides": {
+        "chat_model": "google/gemini-2.5-flash",
+        "utility_model": "x-ai/grok-4.1-fast",
+        "temperature": 0.3
+      },
+      "tools_enabled": [
+        "knowledge_tool",
+        "browser_agent",
+        "github_mcp"
+      ],
+      "mcp_servers": [],
+      "forbidden_tools": [
+        "code_execution_tool"
+      ]
+    },
+    "research-analyst": {
+      "agent_id": "research-analyst",
+      "profile": "research-analyst",
+      "role": "Feasibility Validation agent in the team-research pod. Receives ONLY the CONSOLIDATED_INTEL_REPORT prepared by Veda \u2014 never interacts directly with research-scholar or research-scout. Sole responsibility is feasibility validation. Evaluates every item in the consolidated report against five dimensions: license compatibility, ecosystem health, maintenance velocity, dependency risk, and production readiness. Assigns viability score and elimination justification to each item. Does NOT introduce new research. Does NOT perform architectural synthesis. Does NOT write any artifact to disk. Output is structured FEASIBILITY_REPORT delivered to Veda only.",
+      "team_id": "team-research",
+      "status": "assigned",
+      "created_at": "2026-03-04T08:47:06.554543+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/research-analyst",
+      "model_overrides": {
+        "chat_model": "anthropic/claude-sonnet-4.6",
+        "utility_model": "x-ai/grok-4.1-fast",
+        "temperature": 0.2
+      },
+      "tools_enabled": [
+        "knowledge_tool",
+        "browser_agent"
+      ],
+      "mcp_servers": [],
+      "forbidden_tools": [
+        "code_execution_tool",
+        "github_mcp"
+      ]
+    },
+    "research-director": {
+      "agent_id": "research-director",
+      "profile": "research-director",
+      "role": "Cognitive synthesis authority in the team-research pod. Receives only the FEASIBILITY_REPORT from Veda after RG3 is approved. Constructs coherent architectural thesis, defines memory topology, specifies agent interaction models aligned with declared cognitive stance and research bias vector. Anchors every major claim to the Evidence Traceability Table. Does NOT execute any tools. Does NOT validate licenses. Does NOT persist any artifact to disk. Does NOT browse web or query GitHub. Outputs structured blueprint content to Veda only, strictly following Mandatory Artifact Structure: Version Metadata Block, Executive Thesis, State-of-the-Art Analysis, Ecosystem Intelligence, Feasibility Matrix, Architectural Blueprint, Differentiation Statement, Evidence Traceability Table, Delta Section (if revision mode).",
+      "team_id": "team-research",
+      "status": "assigned",
+      "created_at": "2026-03-04T08:58:11.668436+00:00",
+      "created_by": "veda",
+      "profile_path": "/a0/usr/agents/research-director",
+      "model_overrides": {
+        "chat_model": "anthropic/claude-sonnet-4.6",
+        "utility_model": "x-ai/grok-4.1-fast",
+        "temperature": 0.2
+      },
+      "tools_enabled": [],
+      "mcp_servers": [],
+      "forbidden_tools": [
+        "code_execution_tool",
+        "browser_agent",
+        "knowledge_tool",
+        "github_mcp"
+      ]
     }
   },
-  "last_modified": "2026-03-01T15:41:45.162592+00:00",
+  "last_modified": "2026-03-04T08:58:11.668436+00:00",
   "modified_by": "veda"
 }

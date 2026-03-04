@@ -1,13 +1,13 @@
 {
-  "_comment": "Profile settings for devops-change-manager. Add model overrides here if needed.",
-  "_forged_at": "2026-03-01T14:33:39.290179+00:00",
-  "_forged_by": "veda",
-  "_team": "team-devops",
-  "chat_model_provider": "openrouter",
-  "chat_model_name": "anthropic/claude-sonnet-4-5",
-  "util_model_provider": "openrouter",
-  "util_model_name": "x-ai/grok-4.1-fast",
-  "chat_model_kwargs": {
-    "temperature": 0.3
+  "llm_overrides": {
+    "chat_model": {
+      "provider": "openrouter",
+      "model": "minimax/minimax-m2.5",
+      "temperature": 0.1
+    },
+    "util_model": {
+      "provider": "openrouter",
+      "model": "x-ai/grok-4.1-fast"
+    }
   }
 }

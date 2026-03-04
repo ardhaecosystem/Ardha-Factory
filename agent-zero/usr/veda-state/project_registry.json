@@ -1,7 +1,22 @@
 {
   "schema_version": "3.0.0",
   "type": "project_registry",
-  "projects": {},
-  "last_modified": "2026-02-28T19:56:49.652971+00:00",
+  "projects": {
+    "proj-echo-sentinel": {
+      "project_id": "proj-echo-sentinel",
+      "a0_project_name": "proj-echo-sentinel",
+      "title": "Echo-Sentinel",
+      "description": "Lightweight diagnostic tool for full-stack orchestration testing",
+      "team_id": "team-devops",
+      "status": "active",
+      "memory_mode": "own",
+      "specs": [
+        "SPEC-team-devops-proj-echo-sentinel-001"
+      ],
+      "created_at": "2026-03-03T07:01:25.957163+00:00",
+      "created_by": "veda"
+    }
+  },
+  "last_modified": "2026-03-03T07:02:12.741486+00:00",
   "modified_by": "veda"
 }

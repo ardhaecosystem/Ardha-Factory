@@ -25,11 +25,30 @@
         "devops-doc-formatter",
         "devops-ppt-designer"
       ],
-      "projects": [],
+      "projects": [
+        "proj-echo-sentinel"
+      ],
       "memory_subdir": "team-devops",
       "isolation_level": "strict"
+    },
+    "team-research": {
+      "team_id": "team-research",
+      "created_at": "2026-03-04T07:52:56.385241+00:00",
+      "created_by": "veda",
+      "status": "active",
+      "purpose": "On-demand deep research pod. Executes high-intent research sessions that produce architecture-grade, evidence-traceable, memory-indexed blueprints suitable for downstream DevOps requirement extraction. Strictly cognition-only \u2014 never triggers team-devops directly.",
+      "agents": [
+        "research-scholar",
+        "research-scout",
+        "research-analyst",
+        "research-director"
+      ],
+      "projects": [],
+      "memory_subdir": "team-research",
+      "isolation_level": "strict",
+      "agent_count": 4
     }
   },
-  "last_modified": "2026-03-01T15:41:45.162592+00:00",
+  "last_modified": "2026-03-04T13:55:00+00:00",
   "modified_by": "veda"
 }

@@ -18,6 +18,14 @@
       "created_at": "2026-03-01T15:41:02.925058+00:00",
       "status": "active",
       "isolation_level": "strict"
+    },
+    "team-research": {
+      "owner": "team-research",
+      "owner_type": "team",
+      "purpose": "Memory namespace for team-research",
+      "created_at": "2026-03-04T07:52:56.385241+00:00",
+      "status": "active",
+      "isolation_level": "strict"
     }
   },
   "rules": {
@@ -27,6 +35,6 @@
     "team_prefix": "team-",
     "project_prefix": "proj-"
   },
-  "last_modified": "2026-03-01T15:41:02.925058+00:00",
+  "last_modified": "2026-03-04T07:52:56.385241+00:00",
   "modified_by": "veda"
 }

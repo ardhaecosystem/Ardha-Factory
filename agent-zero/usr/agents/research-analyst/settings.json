@@ -1,0 +1,21 @@
+{
+  "_comment": "Profile settings for research-analyst. Add model overrides here if needed.",
+  "_forged_at": "2026-03-04T08:47:06.553829+00:00",
+  "_forged_by": "veda",
+  "_team": "team-research",
+  "model_overrides": {
+    "chat_model": "anthropic/claude-sonnet-4.6",
+    "utility_model": "x-ai/grok-4.1-fast",
+    "temperature": 0.2
+  },
+  "tools": {
+    "allowed": [
+      "knowledge_tool",
+      "browser_agent"
+    ],
+    "forbidden": [
+      "code_execution_tool",
+      "github_mcp"
+    ]
+  }
+}
